@@ -127,9 +127,9 @@ compile_commands.json
 # =============================
 # Visual Studio files
 # =============================
-*.vcxproj.filters
-*.vcxproj.user
-*.sln
+# *.vcxproj.filters
+# *.vcxproj.user
+# *.sln
 *.suo
 *.opensdf
 *.sdf
