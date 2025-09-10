@@ -39,3 +39,129 @@
 
 # debug information files
 *.dwo
+
+# =============================
+# C++ wxWidgets Project .gitignore
+# =============================
+
+# =============================
+# Build directories
+# =============================
+build/
+bin/
+obj/
+Debug/
+Release/
+x64/
+Win32/
+*.exe
+*.out
+
+# =============================
+# Visual Studio specific
+# =============================
+.vs/
+.vscode/
+wxTemplate/Debug/
+wxTemplate/Release/
+wxTemplate/x64/
+
+# =============================
+# Compiled Object files
+# =============================
+*.slo
+*.lo
+*.o
+*.obj
+*.objs
+
+# =============================
+# Precompiled Headers
+# =============================
+*.pch
+*.gch
+
+# =============================
+# Compiled Dynamic libraries
+# =============================
+*.so
+*.dylib
+*.dll
+
+# =============================
+# Compiled Static libraries
+# =============================
+*.lai
+*.la
+*.a
+*.lib
+
+# =============================
+# Executables
+# =============================
+*.exe
+*.out
+*.app
+
+# =============================
+# IDE and Editor Files
+# =============================
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# =============================
+# CMake files
+# =============================
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+
+# =============================
+# Visual Studio files
+# =============================
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
+*.suo
+*.opensdf
+*.sdf
+*.VC.db
+*.VC.VC.opendb
+
+# =============================
+# Xcode files
+# =============================
+*.pbxproj
+*.xcworkspace
+xcuserdata/
+
+# =============================
+# Code::Blocks files
+# =============================
+*.cbp
+*.layout
+
+# =============================
+# Debug files
+# =============================
+*.dSYM/
+*.stackdump
+
+# =============================
+# Log files
+# =============================
+*.log
+
+# =============================
+# Temporary files
+# =============================
+*.tmp
+*.temp
