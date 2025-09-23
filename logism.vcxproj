@@ -102,12 +102,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\wxWidgets-3.2.2.1\include;C:\wxWidgets-3.2.2.1\include\msvc;C:\wxWidgets-3.2.2.1\lib\vc_x64_lib\mswud;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\200-dev_project\210-C\wxWidgets-3.2.2.1\include;E:\200-dev_project\210-C\wxWidgets-3.2.2.1\include\msvc;E:\200-dev_project\210-C\wxWidgets-3.2.2.1\lib\vc_x64_lib\mswud;C:\wxWidgets-3.2.2.1\include;C:\wxWidgets-3.2.2.1\include\msvc;C:\wxWidgets-3.2.2.1\lib\vc_x64_lib\mswud;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories> C:\wxWidgets-3.2.2.1\lib\vc_x64_lib;</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>E:\200-dev_project\210-C\wxWidgets-3.2.2.1\lib\vc_x64_lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -118,22 +118,30 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>E:\200-dev_project\210-C\wxWidgets-3.2.2.1\include;E:\200-dev_project\210-C\wxWidgets-3.2.2.1\include\msvc;E:\200-dev_project\210-C\wxWidgets-3.2.2.1\lib\vc_x64_lib\mswud;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>E:\200-dev_project\210-C\wxWidgets-3.2.2.1\lib\vc_x64_lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CircuitCanvas.cpp" />
+    <ClCompile Include="CircuitComponent.cpp" />
     <ClCompile Include="MainFrame.cpp" />
     <ClCompile Include="MyApp.cpp" />
     <ClCompile Include="MenuUtils.cpp" />
     <ClCompile Include="ProjectTreePanel.cpp" />
+    <ClCompile Include="Wire.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CircuitCanvas.h" />
+    <ClInclude Include="CircuitComponent.h" />
     <ClInclude Include="MainFrame.h" />
     <ClInclude Include="MenuUtils.h" />
     <ClInclude Include="ProjectTreePanel.h" />
+    <ClInclude Include="Wire.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="logism.rc" />

@@ -68,43 +68,39 @@ MainFrame::MainFrame(const wxString& title)
     BindEvents();
 }
 
-void MainFrame::CreateControls()
-{
+void MainFrame::CreateControls() {
     m_splitter = new wxSplitterWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize,
         wxSP_LIVE_UPDATE | wxSP_3D);
 
-    // 创建左侧容器
+    // 左侧容器 (保持不变)
     wxPanel* leftContainerPanel = new wxPanel(m_splitter);
     wxBoxSizer* leftSizer = new wxBoxSizer(wxVERTICAL);
 
-    // 添加工具栏（保留原逻辑）
+    // 添加工具栏
     wxToolBar* firstRowToolbar = new wxToolBar(leftContainerPanel, wxID_ANY);
     firstRowToolbar->SetToolBitmapSize(wxSize(24, 24));
-    firstRowToolbar->AddTool(wxID_ANY, "Pointer", wxArtProvider::GetBitmap(wxART_NORMAL_FILE, wxART_TOOLBAR));
-    firstRowToolbar->AddTool(wxID_ANY, "Text", wxArtProvider::GetBitmap(wxART_EDIT, wxART_TOOLBAR));
+    firstRowToolbar->AddTool(COMPONENT_AND, "AND", wxArtProvider::GetBitmap(wxART_NORMAL_FILE, wxART_TOOLBAR));
+    firstRowToolbar->AddTool(COMPONENT_OR, "OR", wxArtProvider::GetBitmap(wxART_EDIT, wxART_TOOLBAR));
+    firstRowToolbar->AddTool(COMPONENT_NOT, "NOT", wxArtProvider::GetBitmap(wxART_GO_FORWARD, wxART_TOOLBAR));
     firstRowToolbar->AddSeparator();
-    firstRowToolbar->AddTool(wxID_ANY, "Play", wxArtProvider::GetBitmap(wxART_GO_FORWARD, wxART_TOOLBAR));
+    firstRowToolbar->AddTool(COMPONENT_INPUT, "Input", wxArtProvider::GetBitmap(wxART_PLUS, wxART_TOOLBAR));
+    firstRowToolbar->AddTool(COMPONENT_OUTPUT, "Output", wxArtProvider::GetBitmap(wxART_DELETE, wxART_TOOLBAR));
+    firstRowToolbar->AddSeparator();
+    firstRowToolbar->AddTool(1002, "Wire Mode", wxArtProvider::GetBitmap(wxART_COPY, wxART_TOOLBAR));
     firstRowToolbar->Realize();
     leftSizer->Add(firstRowToolbar, 0, wxEXPAND | wxALL, 5);
 
-    wxToolBar* secondRowToolbar = new wxToolBar(leftContainerPanel, wxID_ANY);
-    secondRowToolbar->SetToolBitmapSize(wxSize(24, 24));
-    secondRowToolbar->AddTool(wxID_ANY, "+", wxArtProvider::GetBitmap(wxART_PLUS, wxART_TOOLBAR));
-    secondRowToolbar->AddTool(wxID_ANY, "×", wxArtProvider::GetBitmap(wxART_DELETE, wxART_TOOLBAR));
-    secondRowToolbar->Realize();
-    leftSizer->Add(secondRowToolbar, 0, wxEXPAND | wxALL, 5);
-
-    // 👉 使用我们封装好的项目树面板
+    // 添加项目树面板
     auto* projectTreePanel = new ProjectTreePanel(leftContainerPanel);
     leftSizer->Add(projectTreePanel, 1, wxEXPAND | wxALL, 5);
 
     leftContainerPanel->SetSizer(leftSizer);
 
-    // 右侧工作区
-    auto* workArea = new WorkAreaPanel(m_splitter);
+    // 右侧工作区 - 使用新的CircuitCanvas
+    m_circuitCanvas = new CircuitCanvas(m_splitter);
 
     // 分割窗口
-    m_splitter->SplitVertically(leftContainerPanel, workArea, 200);
+    m_splitter->SplitVertically(leftContainerPanel, m_circuitCanvas, 200);
     m_splitter->SetMinimumPaneSize(50);
 
     // 主布局
@@ -164,6 +160,7 @@ void MainFrame::BindEvents()
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnUsersGuide, this, ID_USERS_GUIDE);
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnLibraryReference, this, ID_LIBRARY_REFERENCE);
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnAbout, this, ID_ABOUT);
+
 }
 
 // 事件处理函数（空实现，可后续填充）

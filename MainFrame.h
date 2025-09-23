@@ -9,6 +9,7 @@
 
 // 先包含自定义头文件，确保ID和函数声明可用
 #include "MenuUtils.h"
+#include "CircuitCanvas.h"
 
 class MainFrame : public wxFrame
 {
@@ -45,7 +46,10 @@ private:
         void OnPaint(wxPaintEvent& event);
         DECLARE_EVENT_TABLE()
     };
-
+    // ... 现有成员 ...
+    CircuitCanvas* m_circuitCanvas = nullptr;
+    ComponentType m_selectedComponentType;
+    bool m_wireMode;
     wxSplitterWindow* m_splitter = nullptr;
     wxTreeCtrl* m_treeCtrl = nullptr;
 
