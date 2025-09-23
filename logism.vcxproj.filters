@@ -15,28 +15,27 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Desktop\wxTemplate\src\app\MyApp.cpp">
+    <ClCompile Include="MainFrame.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Desktop\wxTemplate\src\gui\AboutDialog.cpp">
+    <ClCompile Include="MyApp.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Desktop\wxTemplate\src\gui\MainFrame.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Desktop\wxTemplate\src\main.cpp">
+    <ClCompile Include="MenuUtils.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Desktop\wxTemplate\src\app\MyApp.h">
+    <ClInclude Include="MainFrame.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Desktop\wxTemplate\src\gui\AboutDialog.h">
+    <ClInclude Include="MenuUtils.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Desktop\wxTemplate\src\gui\MainFrame.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="logism.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

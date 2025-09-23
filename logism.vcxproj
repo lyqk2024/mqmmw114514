@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{d0fc222a-7672-4186-9cc9-f162d3bdc55c}</ProjectGuid>
-    <RootNamespace>wxTemplate</RootNamespace>
+    <ProjectGuid>{af52fb4f-bb69-4797-ac51-18b3af2f3870}</ProjectGuid>
+    <RootNamespace>logism</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -107,7 +107,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\wxWidgets-3.2.2.1\lib\vc_x64_lib;</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories> C:\wxWidgets-3.2.2.1\lib\vc_x64_lib;</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -125,15 +125,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Desktop\wxTemplate\src\app\MyApp.cpp" />
-    <ClCompile Include="..\..\..\Desktop\wxTemplate\src\gui\AboutDialog.cpp" />
-    <ClCompile Include="..\..\..\Desktop\wxTemplate\src\gui\MainFrame.cpp" />
-    <ClCompile Include="..\..\..\Desktop\wxTemplate\src\main.cpp" />
+    <ClCompile Include="MainFrame.cpp" />
+    <ClCompile Include="MyApp.cpp" />
+    <ClCompile Include="MenuUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Desktop\wxTemplate\src\app\MyApp.h" />
-    <ClInclude Include="..\..\..\Desktop\wxTemplate\src\gui\AboutDialog.h" />
-    <ClInclude Include="..\..\..\Desktop\wxTemplate\src\gui\MainFrame.h" />
+    <ClInclude Include="MainFrame.h" />
+    <ClInclude Include="MenuUtils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="logism.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
