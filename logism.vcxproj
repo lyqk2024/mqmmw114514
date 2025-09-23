@@ -128,10 +128,12 @@
     <ClCompile Include="MainFrame.cpp" />
     <ClCompile Include="MyApp.cpp" />
     <ClCompile Include="MenuUtils.cpp" />
+    <ClCompile Include="ProjectTreePanel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainFrame.h" />
     <ClInclude Include="MenuUtils.h" />
+    <ClInclude Include="ProjectTreePanel.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="logism.rc" />

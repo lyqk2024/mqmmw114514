@@ -1,10 +1,6 @@
 // MyApp.cpp
-#pragma warning(push)
-#pragma warning(disable: 6011 26495 26439 28251)
-#include <wx/wx.h>
-#pragma warning(pop)
-
 #include "MainFrame.h"
+#include <wx/wx.h>
 
 class MyApp : public wxApp
 {

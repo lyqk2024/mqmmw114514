@@ -1,4 +1,5 @@
 ﻿#include "MainFrame.h"
+#include "ProjectTreePanel.h"
 #include <wx/artprov.h>
 #include <wx/dcbuffer.h>
 #include <wx/aboutdlg.h>
@@ -69,58 +70,47 @@ MainFrame::MainFrame(const wxString& title)
 
 void MainFrame::CreateControls()
 {
-    // 1. 创建分割窗口
     m_splitter = new wxSplitterWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize,
         wxSP_LIVE_UPDATE | wxSP_3D);
 
-    // 2. 创建【左侧容器面板】
+    // 创建左侧容器
     wxPanel* leftContainerPanel = new wxPanel(m_splitter);
+    wxBoxSizer* leftSizer = new wxBoxSizer(wxVERTICAL);
 
-    // 3. 创建左侧工具栏区域
-    wxBoxSizer* leftToolbarSizer = new wxBoxSizer(wxVERTICAL);
-
-    // 第一排图标工具栏
-    wxToolBar* firstRowToolbar = new wxToolBar(leftContainerPanel, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTB_HORIZONTAL);
+    // 添加工具栏（保留原逻辑）
+    wxToolBar* firstRowToolbar = new wxToolBar(leftContainerPanel, wxID_ANY);
     firstRowToolbar->SetToolBitmapSize(wxSize(24, 24));
     firstRowToolbar->AddTool(wxID_ANY, "Pointer", wxArtProvider::GetBitmap(wxART_NORMAL_FILE, wxART_TOOLBAR));
     firstRowToolbar->AddTool(wxID_ANY, "Text", wxArtProvider::GetBitmap(wxART_EDIT, wxART_TOOLBAR));
     firstRowToolbar->AddSeparator();
     firstRowToolbar->AddTool(wxID_ANY, "Play", wxArtProvider::GetBitmap(wxART_GO_FORWARD, wxART_TOOLBAR));
-    firstRowToolbar->AddTool(wxID_ANY, "Pause", wxArtProvider::GetBitmap(wxART_TIP, wxART_TOOLBAR));
     firstRowToolbar->Realize();
-    leftToolbarSizer->Add(firstRowToolbar, 0, wxEXPAND | wxALL, 5);
+    leftSizer->Add(firstRowToolbar, 0, wxEXPAND | wxALL, 5);
 
-    // 第二排图标工具栏
-    wxToolBar* secondRowToolbar = new wxToolBar(leftContainerPanel, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTB_HORIZONTAL);
+    wxToolBar* secondRowToolbar = new wxToolBar(leftContainerPanel, wxID_ANY);
     secondRowToolbar->SetToolBitmapSize(wxSize(24, 24));
     secondRowToolbar->AddTool(wxID_ANY, "+", wxArtProvider::GetBitmap(wxART_PLUS, wxART_TOOLBAR));
-    secondRowToolbar->AddTool(wxID_ANY, "↑", wxArtProvider::GetBitmap(wxART_GO_UP, wxART_TOOLBAR));
-    secondRowToolbar->AddTool(wxID_ANY, "↓", wxArtProvider::GetBitmap(wxART_GO_DOWN, wxART_TOOLBAR));
     secondRowToolbar->AddTool(wxID_ANY, "×", wxArtProvider::GetBitmap(wxART_DELETE, wxART_TOOLBAR));
     secondRowToolbar->Realize();
-    leftToolbarSizer->Add(secondRowToolbar, 0, wxEXPAND | wxALL, 5);
+    leftSizer->Add(secondRowToolbar, 0, wxEXPAND | wxALL, 5);
 
-    // 4. 创建【左侧白色面板】
-    wxPanel* leftWhitePanel = new wxPanel(leftContainerPanel, wxID_ANY,
-        wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL | wxBORDER_SIMPLE);
-    leftWhitePanel->SetBackgroundColour(*wxWHITE); // 设置背景为白色
+    // 👉 使用我们封装好的项目树面板
+    auto* projectTreePanel = new ProjectTreePanel(leftContainerPanel);
+    leftSizer->Add(projectTreePanel, 1, wxEXPAND | wxALL, 5);
 
-    // 5. 将左侧工具栏区域和白色面板添加到左侧容器面板的垂直布局管理器中
-    leftToolbarSizer->Add(leftWhitePanel, 1, wxEXPAND | wxALL, 5);
-    leftContainerPanel->SetSizer(leftToolbarSizer);
+    leftContainerPanel->SetSizer(leftSizer);
 
-    // 6. 创建【右侧工作区面板】
+    // 右侧工作区
     auto* workArea = new WorkAreaPanel(m_splitter);
 
-    // 7. 【关键步骤】使用正确的窗口指针进行分割
+    // 分割窗口
     m_splitter->SplitVertically(leftContainerPanel, workArea, 200);
     m_splitter->SetMinimumPaneSize(50);
 
-    // 8. 将分割窗口添加到主框架的布局中
-    this->SetSizerAndFit(new wxBoxSizer(wxVERTICAL));
-    this->GetSizer()->Add(m_splitter, 1, wxEXPAND);
+    // 主布局
+    SetSizerAndFit(new wxBoxSizer(wxVERTICAL));
+    GetSizer()->Add(m_splitter, 1, wxEXPAND);
 
-    // 9. 调整窗口大小并居中
     SetSize(1200, 800);
     Center();
 }

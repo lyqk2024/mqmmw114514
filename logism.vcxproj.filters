@@ -24,12 +24,18 @@
     <ClCompile Include="MenuUtils.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="ProjectTreePanel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainFrame.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="MenuUtils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectTreePanel.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
